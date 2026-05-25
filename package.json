@@ -1,0 +1,16 @@
+{
+  "name": "@smithery-ai/server-kaoris",
+  "version": "1.0.0",
+  "description": "Kairos Signal — Data Intelligence for AI Agents via MCP. 5.27M property records, DAG manifold computation, federal contract intelligence, corporate distress signals.",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "keywords": ["mcp", "data-intelligence", "property", "distress", "dag", "manifold", "federal-contracts", "ai-agent"],
+  "author": "Kairos Signal",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  }
+}
