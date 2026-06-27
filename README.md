@@ -1,67 +1,69 @@
-# Kairos Signal — MCP Server
+# Kairos Signal MCP Server
 
-Data intelligence for AI agents via Model Context Protocol.
+**63-layer Symplectic Neural ODE — 256-dimensional DAG Manifold Correlation Engine**
 
-**5.27M+ property records** | **DAG manifold computation** | **$7.32T federal contract tracking** | **Corporate distress signals**
+Real market signal compression via topological invariants. Not flat embeddings — structure that flat-vector models structurally cannot discover.
+
+## Live Data (4.31B+ records)
+
+| Dataset | Records | Source |
+|---------|---------|--------|
+| Market Ticks | 4.31B | ClickHouse (230+ crypto perpetuals) |
+| ZK Cryptographic Footprints | 1.44M | ClickHouse (SHA-256 DAG provenance) |
+| DePIN Network Stats | 339K | ClickHouse (node telemetry) |
+| Distressed Property Leads | 23,674 | SQLite (owner contacts, risk scores) |
+| Massive Technical Indicators | 7,419 | ClickHouse (RSI, MACD, ATR) |
+| US County Atlas | 3,235 | SQLite (counties + places) |
 
 ## Quick Start
 
 ```bash
-# Get an API key at https://gpu.kairossignal.com/v1/register
-export KAIROS_API_KEY=your_key_here
-export KAIROS_API_URL=https://gpu.kairossignal.com
+# MCP JSON-RPC endpoint (works with Claude, Cursor, Continue):
+POST https://kairossignal.com/mcp/
 
-npx -y @smithery-ai/server-kaoris
-```
-
-### With Claude / Cursor / Continue
-
-Add to your MCP config:
-
-```json
-{
-  "mcpServers": {
-    "kairos-signal": {
-      "command": "npx",
-      "args": ["-y", "@smithery-ai/server-kaoris"],
-      "env": {
-        "KAIROS_API_KEY": "your_key_here",
-        "KAIROS_API_URL": "https://gpu.kairossignal.com"
-      }
-    }
-  }
-}
+# Free tier: 50 queries/day, 10 records max
+# No API key required for free tier
 ```
 
 ## Tools
 
-| Tool | Description |
-|------|-------------|
-| `query_distressed_properties` | Search 5.27M+ property records by state/city/zip |
-| `compute_manifold` | 37-layer DAG forward pass — 316-dim topological vectors |
-| `search_federal_contracts` | Search $7.32T in tracked federal contracts |
-| `get_market_intelligence` | DAG-computed distress indices and correlations |
-| `list_available_datasets` | Browse all available data products |
+- `list_datasets` — List all datasets with real record counts
+- `get_stats` — Aggregate statistics across all databases
+- `fetch_dataset` — Query records from any dataset
+- `verify_footprint` — SHA-256 cryptographic verification
+- `get_zk_provenance` — Zero-knowledge provenance proof
+- `purchase_data` — Autonomous Stripe checkout (7 LIVE SKUs)
 
-## Pricing
+## Products (7 LIVE, Stripe-enabled)
 
-- **Manifold API**: $499/mo — 100K DAG computations
-- **MCP Unlimited**: $999/mo — All datasets + DAG
-- **TX Property Intelligence**: $149/mo — 36.8K distressed parcels
-- **Free tier**: 10K tokens/day on GPU Compute
+| Product | Price | Description |
+|---------|-------|-------------|
+| Distress Feed Snapshot | $85 | 290 platinum-tier leads |
+| TX Distress Intelligence | $149/mo | 1,876 Texas leads |
+| Foreclosure Intel Feed | $199/mo | 2,120 foreclosure leads |
+| Probate Property Intel | $199/mo | 1,681 probate leads |
+| Nationwide County Atlas | $499 | 3,235 counties + 32,633 places |
+| Manifold Computation API | $499/mo | 100K DAG requests |
+| MCP Unlimited | $999/mo | All datasets, 10K req/day |
+
+## Discovery
+
+- MCP: https://kairossignal.com/mcp/
+- Agent Card: https://kairossignal.com/.well-known/agent-card.json
+- MCP Discovery: https://kairossignal.com/.well-known/mcp.json
+- Server Card: https://kairossignal.com/.well-known/mcp/server-card.json
+- LLMs.txt: https://kairossignal.com/llms.txt
+- OpenAPI: https://kairossignal.com/openapi.json
+- Health: https://kairossignal.com/mcp/health
 
 ## Architecture
 
-Kairos Signal uses a 37-layer Neural DAG (Directed Acyclic Graph) to compute topological invariants of real market signals. Markets are non-Markovian — our DAG preserves path-dependent structure that autoregressive models structurally destroy.
+- 63-layer continuous-time Symplectic Neural ODE (GPU-resident, RTX 3070)
+- 256-dim topological feature space with non-Abelian gauge field geometry
+- ClickHouse: 3.93B rows, 15 data sectors
+- SHA-256 immutable signal proof ledger
+- MCP 2024-11-05 protocol (JSON-RPC over HTTP with SSE)
 
-- **316-dimensional topological feature vectors**
-- **Betti numbers + persistence diagrams**
-- **SHA-3 cryptographic receipts** (ZK-footprints)
-- **<1ms latency** with CUDA acceleration
+## License
 
-## Links
-
-- 🌐 [kairossignal.com](https://kairossignal.com)
-- 📊 [Pricing](https://kairossignal.com/pricing)
-- 🔑 [Get API Key](https://gpu.kairossignal.com/v1/register)
-- 📖 [Docs](https://kairossignal.com/docs)
+MIT
