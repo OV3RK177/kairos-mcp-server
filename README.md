@@ -1,6 +1,6 @@
 # Kairos Signal MCP Server — DePIN Intelligence for AI Agents
 
-**Provenance-first DePIN data API.** 453 networks tracked, 399 with first-party supply telemetry, 25 with on-chain revenue, 740 cataloged. Every value carries source + as_of + a public verify-yourself URL.
+**Provenance-first DePIN data API.** 331 networks with live data (+129 Bittensor subnets), 171 with first-party API telemetry, 10,508 live series, 25 with on-chain revenue, 799 cataloged. Every value carries source + as_of + a public verify-yourself URL.
 
 ## What This Is
 
