@@ -1,6 +1,6 @@
 # Kairos Signal MCP Server — DePIN Data API
 
-First-party DePIN supply telemetry with provenance on every value. 328 live networks + 129 Bittensor subnets (457 symbols), 296 first-party, 11,061 live series.
+First-party DePIN supply telemetry with provenance on every value. 328 live networks + 129 Bittensor subnets (457 symbols), 297 first-party, 10,642 live series.
 
 ## Quick Start (Autonomous — No Human Needed)
 
@@ -20,11 +20,11 @@ POST https://kairossignal.com/mcp/
 ### 3. Query DePIN Data
 ```json
 POST https://kairossignal.com/mcp/
-{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"fetch_dataset","arguments":{"dataset":"depin_stats","limit":10}}}
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"fetch_dataset","arguments":{"dataset":"depin_onchain","limit":10}}}
 ```
 
 ## MCP Tools
-register_agent, list_products, purchase_data, fetch_dataset, list_datasets, check_balance, topup_credits, get_stats, verify_footprint, get_zk_provenance
+register_agent, list_products, purchase_data, topup_credits, check_balance, list_datasets, get_stats, get_data_dictionary, get_derivation_ledger, fetch_dataset, verify_footprint, get_zk_provenance
 
 ## Pricing
 Free: $5 credits on signup. Snapshots: $0.49-$4.99. Design Partner: $199/mo. Pro: $499/mo. Enterprise: $2,000+/mo.
