@@ -1,7 +1,7 @@
 {
   "name": "kairos-mcp-server",
   "version": "2.0.0",
-  "description": "Kairos Signal MCP server \u2014 provenance-first DePIN supply telemetry for AI agents: 370+ live networks, 290+ first-party, every value with source + as_of + verify URL. $5 free credits on signup, no card. Stdio bridge to the hosted endpoint at https://kairossignal.com/mcp/.",
+  "description": "Kairos Signal MCP server \u2014 provenance-first DePIN supply telemetry for AI agents: 360+ live networks, 290+ first-party, every value with source + as_of + verify URL. $5 free credits on signup, no card. Stdio bridge to the hosted endpoint at https://kairossignal.com/mcp/.",
   "main": "index.mjs",
   "type": "module",
   "bin": {
