@@ -1,0 +1,28 @@
+# Smithery configuration — Kairos Signal MCP server
+# stdio bridge to the hosted Streamable-HTTP MCP endpoint.
+# The bridge exposes the live server-side catalog (register_agent included:
+# $5 free credits, no card). KAIROS_API_KEY is optional — agents register
+# through the register_agent tool at runtime.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        title: API Key
+        description: "Optional existing Kairos API key (register_agent gets you one free)"
+      mcpUrl:
+        type: string
+        title: MCP URL
+        description: "Hosted endpoint override"
+        default: "https://kairossignal.com/mcp/"
+  commandFunction: |-
+    (config) => ({
+      "command": "npx",
+      "args": ["-y", "kairos-mcp-server"],
+      "env": {
+        ...(config.apiKey ? { "KAIROS_API_KEY": config.apiKey } : {}),
+        ...(config.mcpUrl ? { "KAIROS_MCP_URL": config.mcpUrl } : {})
+      }
+    })
