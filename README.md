@@ -2,6 +2,22 @@
 
 First-party DePIN supply telemetry with provenance on every value. 360+ live networks + 129 Bittensor subnets (490+ symbols), 290+ first-party, 11,000+ live series.
 
+## Connect From Any MCP Client
+
+Remote (Streamable HTTP) — point your client at:
+
+```
+https://kairossignal.com/mcp/
+```
+
+Claude Code / Cursor / any stdio client:
+
+```json
+{"mcpServers": {"kairos-signal": {"command": "npx", "args": ["-y", "kairos-mcp-server"], "env": {"KAIROS_API_KEY": "<your key — register_agent gets you one free>"}}}}
+```
+
+Listed in the official MCP registry: `com.kairossignal/kairos-signal` (search "kairos" at registry.modelcontextprotocol.io).
+
 ## Quick Start (Autonomous — No Human Needed)
 
 ### 1. Register (get $5 free credits)
