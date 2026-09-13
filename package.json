@@ -1,7 +1,7 @@
 {
   "name": "kairos-mcp-server",
   "version": "2.0.0",
-  "description": "Kairos Signal MCP server \u2014 provenance-first DePIN supply telemetry for AI agents: 360+ live networks, 290+ first-party, every value with source + as_of + verify URL. $5 free credits on signup, no card. Stdio bridge to the hosted endpoint at https://kairossignal.com/mcp/.",
+  "description": "Kairos Signal MCP server - verifiable DePIN + physical-world telemetry: 372 live networks, 501 symbols, 11,100+ series, provenance on every value. Free key, no card.",
   "main": "index.mjs",
   "type": "module",
   "bin": {
@@ -11,14 +11,15 @@
     "start": "node index.mjs"
   },
   "keywords": [
-    "mcp",
-    "mcp-server",
+    "ai-agents",
+    "api",
+    "bittensor",
+    "crypto",
     "depin",
-    "telemetry",
+    "mcp",
+    "model-context-protocol",
     "provenance",
-    "alternative-data",
-    "ai-agent",
-    "data-api"
+    "telemetry"
   ],
   "author": "Kairos Signal",
   "license": "MIT",
@@ -28,5 +29,15 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "files": [
+    "index.mjs",
+    "README.md",
+    "smithery.yaml",
+    "server.json"
+  ],
+  "homepage": "https://kairossignal.com",
+  "engines": {
+    "node": ">=18"
   }
 }
