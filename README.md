@@ -23,7 +23,7 @@ Listed in the official MCP registry: `com.kairossignal/kairos-signal` (search "k
 ### 1. Register (get $5 free credits)
 ```json
 POST https://kairossignal.com/mcp/
-{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"register_agent","arguments":{"agent_name":"my-agent","email":"me@example.com"}}}
+{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"register_agent","arguments":{"agent_name":"my-agent","email":"support@kairossignal.com"}}}
 ```
 Returns: `{"api_key": "...", "credits_balance": 5.0}`
 
