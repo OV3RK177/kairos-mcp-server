@@ -59,3 +59,10 @@ Free key: $5 credits (first key per IP; 3 keys per IP per 30 days). One-shot pro
 - Stripe: https://buy.stripe.com/dRm00b9zT81o5a50Na1ZS20
 
 License: MIT
+
+## More
+
+- Homepage: https://kairossignal.com
+- Evidence-based diligence: https://kairossignal.com/diligence
+- Full docs: https://kairossignal.com/docs.html
+- OpenAPI: https://kairossignal.com/openapi.json
