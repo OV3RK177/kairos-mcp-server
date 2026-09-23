@@ -1,7 +1,7 @@
 {
   "name": "kairos-mcp-server",
   "version": "2.0.3",
-  "description": "Kairos Signal MCP server - verifiable DePIN + physical-world telemetry: 372 live networks, 501 symbols, 11,100+ series, provenance on every value. Free key, no card.",
+  "description": "Kairos Signal MCP server - verifiable DePIN + physical-world telemetry: 369 live networks, 498 symbols, 12,171 series, provenance on every value. Free key, no card.",
   "main": "index.mjs",
   "type": "module",
   "bin": {
