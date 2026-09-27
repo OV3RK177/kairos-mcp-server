@@ -1,6 +1,6 @@
 # Kairos Signal MCP Server — DePIN Data API
 
-First-party DePIN supply telemetry with provenance on every value. 375 live networks of a 731-entry catalog + 129 Bittensor subnets (504 live symbols), 320 first-party, 19,629 live series (7,523 first-party). Every value carries source + as_of + verify_url — verify yourself upstream.
+First-party DePIN supply telemetry with provenance on every value. 370+ networks with live data (from a catalog of 730+ entries) plus 129 Bittensor subnets: 500+ live symbols, 315+ networks read first-party, 19,000+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`. Every value carries source + as_of + verify_url — verify it yourself upstream.
 
 ## Connect From Any MCP Client
 
@@ -20,12 +20,12 @@ Listed in the official MCP registry: `com.kairossignal/kairos-signal` (search "k
 
 ## Quick Start (Autonomous — No Human Needed)
 
-### 1. Register (free key: $5 credits on the first key per IP; 3 keys per IP per 30 days)
+### 1. Register (free key: $5 credits on each of the first 3 keys per IP per 30 days)
 ```json
 POST https://kairossignal.com/mcp/
-{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"register_agent","arguments":{"agent_name":"my-agent","email":"support@kairossignal.com"}}}
+{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"register_agent","arguments":{"agent_name":"my-agent"}}}
 ```
-Returns: `{"api_key": "...", "credits_balance": 5.0}` (first key per IP; re-registering does not grant more)
+Returns: `{"api_key": "...", "credits_balance": 5.0}` (first 3 keys per IP per 30 days; past that a key is still created, at $0, and the response says so). `email` is optional.
 
 ### 2. Browse Products
 ```json
@@ -42,15 +42,15 @@ POST https://kairossignal.com/mcp/
 ### 4. Buy a Product (agents pay from credits — no human, no card)
 ```json
 POST https://kairossignal.com/mcp/
-{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"purchase_data","arguments":{"product_key":"depin_provenance"}}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"purchase_data","arguments":{"product_key":"depin_provenance","api_key":"<your key>"}}}
 ```
 Snapshots $0.49–$4.99 (credits or x402/USDC). Credits top-up: `topup_credits` (Stripe $20/$99).
 
 ## MCP Tools
-register_agent, list_products, purchase_data, topup_credits, check_balance, list_datasets, get_stats, get_data_dictionary, get_derivation_ledger, fetch_dataset, verify_footprint, get_zk_provenance
+register_agent, list_products, purchase_data, topup_credits, check_balance, list_datasets, get_stats, get_data_dictionary, get_derivation_ledger, fetch_dataset, verify_footprint
 
 ## Pricing
-Free key: $5 credits (first key per IP; 3 keys per IP per 30 days). One-shot products: $0.49-$399.90 (`list_products` for the live catalog). Design Partner: $199/mo. Pro: $499/mo. Enterprise: $2,000+/mo.
+Free key: $5 credits (first 3 keys per IP per 30 days). One-shot products: $0.49–$29.99 (`list_products` for the live catalog). Design Partner: $199/mo. Pro: $499/mo. Enterprise: $2,000+/mo.
 
 ## Links
 - Homepage: https://kairossignal.com

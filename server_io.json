@@ -21,13 +21,12 @@
     "get_data_dictionary",
     "get_derivation_ledger",
     "fetch_dataset",
-    "verify_footprint",
-    "get_zk_provenance"
+    "verify_footprint"
   ],
   "pricing": {
-    "free": "$5 credits on registration",
+    "free": "$5 credits on registration (first 3 keys per IP per 30 days)",
     "per_query": "$0.005-$0.02",
-    "design_partner": "$199/month unlimited"
+    "design_partner": "$199/month"
   },
   "discovery": [
     "/.well-known/mcp.json",
