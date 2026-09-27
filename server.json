@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.kairossignal/kairos-signal",
-  "description": "Provenance-first DePIN telemetry: 368+ live networks + 129 Bittensor subnets (497+ symbols), 316+ first-party, 17,535+ live series.",
-  "version": "3.5.1",
+  "description": "Provenance-first DePIN telemetry: 375 live networks of a 731-entry catalog + 129 Bittensor subnets (504 live symbols), 320 first-party, 19,629 live series (7,523 first-party). Every value carries source + as_of + verify_url.",
+  "version": "3.6.0",
   "websiteUrl": "https://kairossignal.com",
   "remotes": [
     {
