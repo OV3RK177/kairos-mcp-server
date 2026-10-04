@@ -1,6 +1,6 @@
 # Kairos Signal MCP Server — DePIN Data API
 
-First-party DePIN supply telemetry with provenance on every value. 370+ networks with live data (from a catalog of 730+ entries) plus 129 Bittensor subnets: 500+ live symbols, 315+ networks read first-party, 19,000+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`. Every value carries source + as_of + verify_url — verify it yourself upstream.
+First-party DePIN supply telemetry with provenance on every value. 370+ networks with live data (from a catalog of 730+ entries) plus 129 Bittensor subnets: 500+ live symbols, 315+ networks read first-party, 16,000+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`. Every value carries source + as_of + verify_url — verify it yourself upstream.
 
 ## Connect From Any MCP Client
 
