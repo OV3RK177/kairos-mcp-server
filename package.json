@@ -1,7 +1,7 @@
 {
   "name": "kairos-mcp-server",
-  "version": "2.0.5",
-  "description": "Kairos Signal MCP server - verifiable DePIN + physical-world telemetry: 370+ networks with live data, 500+ symbols, 18,700+ series, provenance on every value. Free key, no card.",
+  "version": "2.1.0",
+  "description": "Kairos Signal MCP server: verifiable DePIN telemetry, 365+ networks with live data, 495+ symbols, 18,700+ series, a verify URL on every value. Read-only tools need no key.",
   "main": "index.mjs",
   "type": "module",
   "bin": {
@@ -12,14 +12,22 @@
   },
   "keywords": [
     "ai-agents",
+    "akash",
     "api",
     "bittensor",
     "crypto",
+    "decentralized-physical-infrastructure",
     "depin",
+    "filecoin",
+    "gpu",
+    "helium",
     "mcp",
+    "mcp-server",
     "model-context-protocol",
     "provenance",
-    "telemetry"
+    "remote-mcp",
+    "telemetry",
+    "verifiable-data"
   ],
   "author": "Kairos Signal",
   "license": "MIT",
@@ -39,5 +47,6 @@
   "homepage": "https://kairossignal.com",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "mcpName": "com.kairossignal/kairos-signal"
 }

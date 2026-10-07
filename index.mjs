@@ -7,8 +7,8 @@
 // offered (product scope: DePIN / world / network telemetry only).
 //
 // Env:
-//   KAIROS_API_KEY  optional — forwarded as X-API-Key for authenticated tools
-//                   (register_agent first to get one; $5 free credits, no card)
+//   KAIROS_API_KEY  optional — forwarded as X-API-Key for paid depth; every
+//                   read-only tool works without it
 //   KAIROS_MCP_URL  optional override, default https://kairossignal.com/mcp/
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
@@ -43,7 +43,7 @@ async function remote(method, params) {
 }
 
 const server = new Server(
-  { name: "kairos-signal", version: "2.0.0" },
+  { name: "kairos-signal", version: "2.1.0" },
   { capabilities: { tools: {} } }
 );
 
