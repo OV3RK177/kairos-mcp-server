@@ -1,6 +1,6 @@
 # Kairos Signal MCP Server — verifiable DePIN data
 
-Measured supply-side telemetry for DePIN (decentralized physical infrastructure) networks: GPU and compute capacity, storage, node and hotspot counts, on-chain totals. 360+ networks with live data (from a catalog of 720+ entries) plus 129 Bittensor subnets: 490+ live symbols, 310+ networks read first-party, 18,700+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`.
+Measured supply-side telemetry for DePIN (decentralized physical infrastructure) networks: GPU and compute capacity, storage, node and hotspot counts, on-chain totals. 310+ networks with live data (from a catalog of 720+ entries) plus 129 Bittensor subnets: 440+ live symbols, 280+ networks read first-party, 18,700+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`.
 
 Every value carries `source`, `as_of` and a `verify_url` on the network's own API, and the `verify_value` tool re-reads that upstream for you and says where the same number appears.
 
