@@ -1,6 +1,6 @@
 # Kairos Signal MCP Server — verifiable DePIN data
 
-Measured supply-side telemetry for DePIN (decentralized physical infrastructure) networks: GPU and compute capacity, storage, node and hotspot counts, on-chain totals. 365+ networks with live data (from a catalog of 720+ entries) plus 129 Bittensor subnets: 495+ live symbols, 310+ networks read first-party, 18,700+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`.
+Measured supply-side telemetry for DePIN (decentralized physical infrastructure) networks: GPU and compute capacity, storage, node and hotspot counts, on-chain totals. 360+ networks with live data (from a catalog of 720+ entries) plus 129 Bittensor subnets: 490+ live symbols, 310+ networks read first-party, 18,700+ live series. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`.
 
 Every value carries `source`, `as_of` and a `verify_url` on the network's own API, and the `verify_value` tool re-reads that upstream for you and says where the same number appears.
 
@@ -67,11 +67,13 @@ Official MCP Registry: `com.kairossignal/kairos-signal`. The server negotiates M
 | `verify_value` | re-reads the upstream now; JSONPath, difference and verdict | no |
 | `get_stats` | row count per dataset, free-tier limits | no |
 | `get_data_dictionary` | freshness, history depth and coverage per feed | no |
-| `get_derivation_ledger` | archived raw upstream payloads and collector code hashes | no |
-| `list_datasets`, `fetch_dataset` | raw rows (free tier: newest 10 per query) | no |
+| `get_derivation_ledger` | per fetch: SHA-256 and size of the archived upstream payload, collector code hash (payload bytes: paid `derivation_replay`) | no |
+| `list_datasets` | dataset catalog with record counts | no |
+| `fetch_dataset` | raw rows, newest first (free tier: 10 per query) | no |
 | `verify_footprint` | Merkle inclusion check for one archived row | no |
 | `register_agent` | API key plus free starter credits ($5 on each of the first 3 keys per IP per 30 days) | — |
-| `list_products`, `purchase_data`, `topup_credits`, `check_balance` | paid data products bought with prepaid credits | yes |
+| `list_products` | data products and live prices | no |
+| `purchase_data`, `topup_credits`, `check_balance` | buy data products with prepaid credits, add credits, read your balance | yes |
 
 ## Paid data (optional)
 
@@ -91,7 +93,7 @@ Free key: $5 credits (first 3 keys per IP per 30 days). One-shot products: $0.49
 - Full docs: https://kairossignal.com/docs.html
 - OpenAPI: https://kairossignal.com/openapi.json
 - Evidence-based diligence: https://kairossignal.com/diligence
-- Stripe: https://buy.stripe.com/dRm00b9zT81o5a50Na1ZS20
+- Design Partner checkout ($199/mo, Stripe): https://buy.stripe.com/dRm00b9zT81o5a50Na1ZS20
 
 Measurements and research only; not investment advice. Terms: https://kairossignal.com/terms
 

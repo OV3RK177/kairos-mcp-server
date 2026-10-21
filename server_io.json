@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.OV3RK177/kairos-signal",
-  "description": "Provenance-first DePIN telemetry: 368+ live networks + 129 Bittensor subnets (497+ symbols), 316+ first-party, 18,700+ live series.",
-  "version": "3.5.1",
+  "name": "com.kairossignal/kairos-signal",
+  "description": "DePIN network telemetry with the source, as_of time and an upstream verify URL on every value.",
+  "version": "3.7.0",
   "websiteUrl": "https://kairossignal.com",
   "remotes": [
     {
@@ -11,6 +11,10 @@
     }
   ],
   "tools": [
+    "find_networks",
+    "get_network",
+    "get_metric_history",
+    "verify_value",
     "register_agent",
     "list_products",
     "purchase_data",
@@ -24,8 +28,9 @@
     "verify_footprint"
   ],
   "pricing": {
-    "free": "$5 credits on registration (first 3 keys per IP per 30 days)",
-    "per_query": "$0.005-$0.02",
+    "read_only_tools": "free, no key, within a daily per-IP quota",
+    "data_products": "$0.49-$29.99 one-off (list_products for live prices)",
+    "free_key": "$5 credits on registration (first 3 keys per IP per 30 days)",
     "design_partner": "$199/month"
   },
   "discovery": [

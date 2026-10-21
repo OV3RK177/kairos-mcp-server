@@ -1,7 +1,7 @@
 {
   "name": "kairos-mcp-server",
-  "version": "2.1.0",
-  "description": "Kairos Signal MCP server: verifiable DePIN telemetry, 365+ networks with live data, 495+ symbols, 18,700+ series, a verify URL on every value. Read-only tools need no key.",
+  "version": "2.1.1",
+  "description": "Kairos Signal MCP server: verifiable DePIN telemetry, 360+ networks with live data, 490+ symbols, 18,700+ series, a verify URL on every value. Read-only tools need no key.",
   "main": "index.mjs",
   "type": "module",
   "bin": {
