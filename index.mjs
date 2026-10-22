@@ -43,7 +43,7 @@ async function remote(method, params) {
 }
 
 const server = new Server(
-  { name: "kairos-signal", version: "2.1.1" },
+  { name: "kairos-signal", version: "2.1.3" },
   { capabilities: { tools: {} } }
 );
 
