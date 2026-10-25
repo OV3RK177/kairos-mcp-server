@@ -1,26 +1,34 @@
-# Kairos Signal MCP Server — verifiable DePIN data
+# Kairos Signal MCP Server — DePIN and world data
 
-Measured supply-side telemetry for DePIN (decentralized physical infrastructure) networks: GPU and compute capacity, storage, node and hotspot counts, on-chain totals. 315+ networks with live data (from a catalog of 720+ entries) plus 129 Bittensor subnets: 440+ live symbols, 285+ networks read first-party, 18,700+ live series estate-wide. Figures are floors; live counts: `GET https://kairossignal.com/v1/networks`.
+Measured DePIN telemetry, physical-world datasets and descriptive research analytics through REST and MCP. Use source links, observation times and coverage metadata to decide whether a result is suitable for your question. Availability and freshness vary by feed.
 
-Every value carries `source`, `as_of` and a `verify_url` on the network's own API, and the `verify_value` tool re-reads that upstream for you and says where the same number appears.
+Kairos Signal is not a property-owner contact or lead-generation service. The current product is data and research, not a promise of profitable trading signals.
 
-## Connect
+Coverage changes. Use `find_networks`, `get_data_dictionary` and the [network catalog](https://kairossignal.com/v1/networks) rather than a copied network count. Catalog entries, distinct networks, Bittensor subnets, rows and metric series are different quantities. `get_stats` describes dataset row counts, not network coverage.
 
-Remote endpoint (Streamable HTTP). The read-only tools need no key:
+## Connect directly
+
+Full MCP endpoint (Streamable HTTP):
 
 ```
 https://kairossignal.com/mcp
 ```
 
-Read-only edition, without account, purchase or payment tools: `https://kairossignal.com/mcp/public`
+Read-only edition, without account creation, purchases or payment tools:
+
+```
+https://kairossignal.com/mcp/public
+```
+
+Read-only does **not** mean every tool is anonymous or free. In either edition, `get_network_signals` requires an eligible paid-tier key with the engines capability. Other discovery/data tools have their stated no-key samples and limits. The full edition also exposes account tools and paid analytics.
 
 Claude Code:
 
-```
+```sh
 claude mcp add --transport http kairos-signal https://kairossignal.com/mcp
 ```
 
-Cursor, Windsurf and other clients that take a URL:
+Cursor, Windsurf and clients that accept a URL:
 
 ```json
 {"mcpServers": {"kairos-signal": {"url": "https://kairossignal.com/mcp"}}}
@@ -32,69 +40,82 @@ VS Code (`.vscode/mcp.json`):
 {"servers": {"kairos-signal": {"type": "http", "url": "https://kairossignal.com/mcp"}}}
 ```
 
-Any stdio client, through this package's bridge:
+Stdio clients can use this package's bridge:
 
 ```json
 {"mcpServers": {"kairos-signal": {"command": "npx", "args": ["-y", "kairos-mcp-server"]}}}
 ```
 
-Paid depth is optional: send your key as an `X-API-Key` header (remote) or `KAIROS_API_KEY` (bridge).
+Key placement depends on the tool:
 
-Official MCP Registry: `com.kairossignal/kairos-signal`. The server negotiates MCP 2025-11-25, 2025-06-18, 2025-03-26 and 2024-11-05, and every tool carries a title and behaviour annotations.
+- `get_network_signals` requires an eligible subscription key in the connection's `X-API-Key` header. Tiered network/history access also uses that header. In the stdio bridge, `KAIROS_API_KEY` supplies the header.
+- Paid analytics accept that header **or** an `api_key` tool argument.
+- `purchase_data`, `topup_credits` and `check_balance` require `api_key` **inside the tool input**, even when the connection or bridge already has a header key. The bridge does not inject it into the arguments.
 
-## Ask it things
+An API key, a credit balance and a subscription entitlement are not interchangeable.
 
-| Question | Tool calls |
-|---|---|
-| What is Akash's GPU capacity right now? | `find_networks {"query": "akash"}` → `get_network {"symbol": "AKT", "metric_filter": "gpu"}` |
-| How did Filecoin's active miners move this week? | `get_metric_history {"symbol": "FIL", "metric": "ACTIVE_MINERS"}` |
-| Is that number real? | `verify_value {"symbol": "FIL", "metric": "ACTIVE_MINERS"}` |
+Official MCP Registry identity: `com.kairossignal/kairos-signal`. Prefer the vendor endpoint above over a third-party proxy. Smithery's [October 31, 2026 service notice](https://smithery.ai/future) says its proxy and connection-management services will close while its directory remains.
 
-`verify_value` fetches the value's `verify_url` now and reports the JSONPath where the same number appears, the relative difference and a verdict (`exact`, `within_1pct`, `within_10pct`, `no_matching_field`, `not_checkable_by_get`). A real result from 2026-10-07:
+## Ask a measured question
 
-```json
-{"symbol": "AKT", "metric": "GPU_ACTIVE", "verdict": "within_1pct",
- "match": {"json_path": "$.resources.gpu.active", "upstream_value": 297.0, "relative_difference": 0.003378}}
-```
+- GPU capacity: `find_networks {"query":"akash"}`, then `get_network {"symbol":"AKT","metric_filter":"gpu"}`.
+- Observed history: `get_metric_history {"symbol":"FIL","metric":"ACTIVE_MINERS"}`. An absent series is not a zero.
+- Check a figure: `verify_value {"symbol":"FIL","metric":"ACTIVE_MINERS"}`. Read the verdict; some upstream values cannot be checked by a GET.
 
-## Tools
+## Tools and access
 
-| Tool | What it returns | Key |
+The bridge obtains `tools/list` from the hosted service rather than maintaining a separate implementation. Consult that live schema for current inputs, prices and limits.
+
+| Tool | Purpose | Access / effect |
 |---|---|---|
-| `find_networks` | networks by name or ticker → symbol, name, category, page | no |
-| `get_network` | latest first-party values for one network, each with unit, `as_of`, freshness and `verify_url` | no |
-| `get_metric_history` | daily series for one metric (free tier: last 7 days) | no |
-| `verify_value` | re-reads the upstream now; JSONPath, difference and verdict | no |
-| `get_stats` | row count per dataset, free-tier limits | no |
-| `get_data_dictionary` | freshness, history depth and coverage per feed | no |
-| `get_derivation_ledger` | per fetch: SHA-256 and size of the archived upstream payload, collector code hash (payload bytes: paid `derivation_replay`) | no |
-| `list_datasets` | dataset catalog with record counts | no |
-| `fetch_dataset` | raw rows, newest first (free tier: 10 per query) | no |
-| `verify_footprint` | Merkle inclusion check for one archived row | no |
-| `register_agent` | API key plus free starter credits ($5 on each of the first 3 keys per IP per 30 days) | — |
-| `list_products` | data products and live prices | no |
-| `purchase_data`, `topup_credits`, `check_balance` | buy data products with prepaid credits, add credits, read your balance | yes |
+| `get_network_signals` | Scheduled Hodge/lag-relation snapshots for configured market, DePIN and world cohorts. Descriptive, not a trading recommendation. | Eligible paid-tier key with engines capability in the connection header |
+| `find_networks` | Find networks or subnets by name or ticker. Resolve ambiguous tickers before use. | No key |
+| `get_network` | Latest supported first-party network measurements, with provenance and freshness fields. | No key |
+| `get_metric_history` | Observed daily history for one metric; gaps are not zero-filled. | No key for the free window; paid tiers have different limits |
+| `verify_value` | Compare with a supported upstream GET response, which may be cached; inspect `upstream.read_at_utc` and the verdict. | No key |
+| `register_agent` | Create an API key; starter credits are conditional on the current per-IP policy. | Creates an account/key |
+| `list_products` | Product descriptions, prices and deliverability information. | No key |
+| `purchase_data` | Purchase an eligible product; delivery can be inline or a receipt with a retrieval URL. | `api_key` in tool input and sufficient credits |
+| `topup_credits` | Request a supported card-checkout link or USDC quote; follow current payment instructions. | `api_key` in tool input; obtaining a quote is not a confirmed payment |
+| `check_balance` | Read the account credit balance. | `api_key` in tool input |
+| `list_datasets` | Current dataset catalog. | No key |
+| `get_stats` | Dataset row counts, scope and free-tier limits; not a count of distinct networks. | No key |
+| `get_data_dictionary` | Coverage, observation freshness, history depth and endpoints per feed. | No key |
+| `get_derivation_ledger` | Index of covered archived fetches and their payload/code hashes; raw payload bytes are a separate product. | No key |
+| `fetch_dataset` | Raw archive rows within the applicable query limits. Rejected or unchecked observations can be retained. | No key for the free sample |
+| `verify_footprint` | Merkle membership for a supported retained observation; not proof of upstream accuracy or zero-knowledge computation. | No key |
+| `get_hodge_regime_sieve` | Hodge decomposition of metric lead-lag flows; the historical tool name does not imply regime classification. | Paid per answered call |
+| `get_rmt_regime_state` | Correlation-spectrum comparison with a Marchenko–Pastur reference; not a calibrated regime test. | Paid per answered call |
+| `get_depin_slashing_audit` | Enforcement-capacity calculation from sourced protocol parameters; bounds and unavailable inputs remain explicit. | Paid per answered call |
+| `get_shap_node_attribution` | Day/unit Shapley decomposition of observed metric changes; not causal attribution or a forecast. | Paid per answered call |
+| `get_listing_dilution_score` | Measured token-supply changes; not an exchange-listing or investment score. | Paid per answered call |
 
-## Paid data (optional)
+Paid analytics can spend credits. Read the current description before calling; do not repeatedly invoke a paid tool to retry an uncertain result. Their historically named identifiers are retained for compatibility, not as claims of forecasting or causal validation.
 
-1. `register_agent {"agent_name": "my-agent"}` returns an API key. The $5 starter credits apply to the first 3 keys per IP per 30 days; past that a key is still created, at $0, and the response says so. `email` is optional.
-2. `list_products` lists every product and its live price.
-3. `purchase_data {"product_key": "depin_provenance", "api_key": "<your key>"}` charges your credits and delivers the data in the same response.
-4. `topup_credits` returns a Stripe checkout link ($20 or $99), or a USDC-on-Base quote after wallet verification (https://kairossignal.com/docs/crypto.html).
+## Provenance: what the checks establish
 
-## Pricing
-Free key: $5 credits (first 3 keys per IP per 30 days). One-shot products: $0.49–$29.99 (`list_products` for the live catalog). Design Partner: $199/mo. Pro: $499/mo. Enterprise: $2,000+/mo.
+Supported network measurements expose provenance and observation-time fields. A source URL is a way to inspect an origin, not a guarantee that the origin is correct. History, derived analytics, raw archives and catalog metadata have different response contracts; do not assume that every output is a fresh first-party measurement.
+
+`verify_value` compares against a supported upstream GET response that may be cached; inspect `upstream.read_at_utc` and the verdict rather than assuming a new upstream fetch. `verify_footprint` checks retained Merkle membership, not upstream truth, independent Bitcoin confirmation or a zero-knowledge proof. The derivation ledger covers the fetches it explicitly lists; a network can have live telemetry without an archived derivation entry. Raw archives can retain rejected or unchecked observations—read their quality fields.
+
+## Products, delivery and pricing
+
+Use `list_products` and [the live credit catalog](https://kairossignal.com/v1/credits/pricing) for current prices, eligibility and deliverability; use the [pricing page](https://kairossignal.com/pricing.html) for subscription access. This documentation does not set prices or payment policy.
+
+- Registration creates a key; starter-credit eligibility depends on the current per-IP policy. Read the returned balance instead of assuming a grant. A starter key does not itself grant paid-tier engine access.
+- `purchase_data` requires `api_key` in its tool input and a currently deliverable product. Small responses can arrive inline; larger deliveries return a receipt and retrieval URL. Use your own stable `idempotency_key` for each intended purchase and reuse it only for retries of that purchase.
+- The current catalog describes `dag_manifold_30d` as a DAG API access product. Listed legacy/retired products are not automatically purchasable; read deliverability before committing credits.
+- `topup_credits` provides payment instructions for supported card and USDC modes. A quote or checkout link is not payment confirmation. Follow [the payment documentation](https://kairossignal.com/docs/crypto.html); never send funds without a successful current quote.
 
 ## Links
-- Homepage: https://kairossignal.com
-- Network pages: https://kairossignal.com/network/
-- Pricing: https://kairossignal.com/pricing.html
-- llms.txt: https://kairossignal.com/llms.txt
-- Full docs: https://kairossignal.com/docs.html
-- OpenAPI: https://kairossignal.com/openapi.json
-- Evidence-based diligence: https://kairossignal.com/diligence
-- Design Partner checkout ($199/mo, Stripe): https://buy.stripe.com/dRm00b9zT81o5a50Na1ZS20
 
-Measurements and research only; not investment advice. Terms: https://kairossignal.com/terms
+- [Homepage](https://kairossignal.com)
+- [Network pages](https://kairossignal.com/network/)
+- [Documentation](https://kairossignal.com/docs.html)
+- [OpenAPI](https://kairossignal.com/openapi.json)
+- [Machine-readable introduction](https://kairossignal.com/llms.txt)
+- [Evidence-based diligence](https://kairossignal.com/diligence)
+
+Measurements and research only; not investment advice. [Terms](https://kairossignal.com/terms).
 
 License: MIT

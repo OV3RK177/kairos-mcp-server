@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.kairossignal/kairos-signal",
-  "description": "DePIN network telemetry with the source, as_of time and an upstream verify URL on every value.",
+  "description": "DePIN and physical-world data via MCP: source-linked observations and research analytics.",
   "version": "3.7.0",
   "websiteUrl": "https://kairossignal.com",
   "remotes": [
@@ -11,6 +11,7 @@
     }
   ],
   "tools": [
+    "get_network_signals",
     "find_networks",
     "get_network",
     "get_metric_history",
@@ -25,13 +26,18 @@
     "get_data_dictionary",
     "get_derivation_ledger",
     "fetch_dataset",
-    "verify_footprint"
+    "verify_footprint",
+    "get_hodge_regime_sieve",
+    "get_rmt_regime_state",
+    "get_depin_slashing_audit",
+    "get_shap_node_attribution",
+    "get_listing_dilution_score"
   ],
   "pricing": {
-    "read_only_tools": "free, no key, within a daily per-IP quota",
-    "data_products": "$0.49-$29.99 one-off (list_products for live prices)",
-    "free_key": "$5 credits on registration (first 3 keys per IP per 30 days)",
-    "design_partner": "$199/month"
+    "read_only_tools": "No-key samples and query limits vary by tool; get_network_signals requires an eligible paid-tier key.",
+    "data_products": "Current prices and deliverability: https://kairossignal.com/v1/credits/pricing",
+    "free_key": "Starter-credit grants are subject to the current per-IP policy; read the actual returned balance.",
+    "design_partner": "Current subscription price and entitlements: https://kairossignal.com/pricing.html"
   },
   "discovery": [
     "/.well-known/mcp.json",

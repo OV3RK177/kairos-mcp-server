@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.kairossignal/kairos-signal",
-  "title": "Kairos Signal — verifiable DePIN data API",
-  "description": "DePIN network telemetry with the source, as_of time and an upstream verify URL on every value.",
+  "title": "Kairos Signal \u2014 verifiable DePIN data API",
+  "description": "DePIN and physical-world data via MCP: source-linked observations and research analytics.",
   "version": "3.7.0",
   "websiteUrl": "https://kairossignal.com",
   "repository": {
@@ -16,7 +16,7 @@
       "headers": [
         {
           "name": "X-API-Key",
-          "description": "Optional. Your Kairos API key for paid depth; every read-only tool works without it.",
+          "description": "Connection key for tiered reads, get_network_signals and paid analytics. Commerce tools purchase_data, topup_credits and check_balance still require api_key in tool input.",
           "isRequired": false,
           "isSecret": true
         }

@@ -1,8 +1,8 @@
 # Smithery configuration — Kairos Signal MCP server
 # stdio bridge to the hosted Streamable-HTTP MCP endpoint.
-# The bridge exposes the live server-side catalog (register_agent included:
-# $5 free credits, no card). KAIROS_API_KEY is optional — agents register
-# through the register_agent tool at runtime.
+# The bridge exposes the hosted tool catalog, including register_agent.
+# Starter-credit eligibility is conditional; inspect the returned balance.
+# A configured header key does not replace required api_key tool arguments.
 startCommand:
   type: stdio
   configSchema:
