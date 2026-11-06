@@ -1,3 +1,5 @@
+> **Public proof of directed AI systems work** — what I claim, what I refuse to claim, reproducible evidence: [proof/](proof/)
+
 # Kairos Signal MCP Server — DePIN and world data
 
 Measured DePIN telemetry, physical-world datasets and descriptive research analytics through REST and MCP. Use source links, observation times and coverage metadata to decide whether a result is suitable for your question. Availability and freshness vary by feed.
